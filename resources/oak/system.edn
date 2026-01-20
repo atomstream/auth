@@ -1,0 +1,60 @@
+{:system/http
+ {:port    #config :http/port
+  :host    #config :http/host
+  :handler #makina/ref :system/handler}
+
+ :system/handler {:router #makina/ref :system/router}
+
+ :system/router
+ {:routes          #makina/refset :http/api
+  :session-store   #makina/ref :system/session-store
+  :request-filters [#makina/ref :system/database]}
+
+ ;; the middleware before route match
+ :system/middleware {}
+
+ :system/database
+ {:url #config :db/url
+  :username #config :db/username
+  :password #config :db/password
+
+  :catalog #config :db/catalog
+  :connection-init-sql #config :db/connection-init-sql
+  :connection-test-query #config :db/connection-test-query
+  :connection-timeout #config :db/connection-timeout
+  :idle-timeout #config :db/idle-timeout
+  :initialization-fail-timeout #config :db/initialization-fail-timeout
+  :keepalive-time #config :db/keepalive-time
+  :leak-detection-threshold #config :db/leak-detection-threshold
+  :max-lifetime #config :db/max-lifetime
+  :maximum-pool-size #config :db/maximum-pool-size
+  :minimum-idle #config :db/minimum-idle
+  :pool-name #config :db/pool-name
+  :read-only #config :db/read-only
+  :register-mbeans #config :db/register-mbeans
+  :schema #config :db/schema
+  :validation-timeout #config :db/validation-timeout}
+
+ :system/session-store
+ {:makina/type #profile {:default :system/redis-store
+                         :test    :system/memory-store}
+  :host        #config :redis/host
+  :port        #config :redis/port
+  :timeout-ms  #config :redis/timeout-ms
+  :password    #config :redis/password}
+
+ :system/security-providers
+ {:prepend #config :java.security.provider/prepend
+  :append  #config :java.security.provider/append}
+
+ :apis/assets    {:makina/type :http/api}
+ :apis/auth      {:makina/type :http/api}
+ :apis/dashboard {:makina/type :http/api}
+ :apis/jwks      {:makina/type :http/api}
+ :apis/oauth     {:makina/type :http/api}
+ :apis/oidc      {:makina/type :http/api}
+ :apis/openapi   {:makina/type :http/api}
+ :apis/totp      {:makina/type :http/api}
+ :apis/proxy     {:makina/type :http/api}
+ :apis/inspect   {:makina/type :http/api
+                  :enabled #profile {:default false :dev true}}}

@@ -1,0 +1,26 @@
+{
+  "configuration": {
+    "appenders": {
+      "Console": {
+        "name": "JsonConsole",
+        "target": "SYSTEM_OUT",
+        "JsonLayout": {
+          "compact": true,
+          "eventEol": true,
+          "properties": true
+        }
+      }
+    },
+    "loggers": {
+      "logger": [
+        {"name": "org.eclipse.jetty", "level": "info"}
+      ],
+      "root": {
+        "level": "info",
+        "appenderRef": {
+          "ref": "JsonConsole"
+        }
+      }
+    }
+  }
+}

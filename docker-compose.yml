@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  oak-postgres:
+    image: docker.io/postgres:17
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: oak
+      POSTGRES_USER: oak
+      POSTGRES_DB: oak
+    volumes:
+      - oak_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  oak-redis:
+    image: docker.io/redis:8.2.1-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+
+  oak:
+    image: git.gaiwan.co/gaiwan/oak:latest
+    container_name: oak
+    restart: always
+    environment:
+      OAK__DB__URL: jdbc:postgresql://oak-postgres:5432/oak
+      OAK__DB__USERNAME: oak
+      OAK__DB__PASSWORD: oak
+      OAK__REDIS__HOST: oak-redis
+    ports:
+      - "4800:4800"
+    # volumes:
+    #   - "${HOME}/path/to/oak.edn:/etc/oak.edn:ro"
+
+  pgweb:
+    image: docker.io/sosedoff/pgweb
+    ports:
+      - "127.0.0.1:8081:8081"
+    environment:
+      DATABASE_URL: postgres://oak:oak@oak-postgres:5432/oak?sslmode=disable
+    depends_on:
+      - oak-postgres
+
+volumes:
+  oak_data:
