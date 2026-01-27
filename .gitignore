@@ -16,3 +16,4 @@ AGENTS.md
 repl_sessions/mcp_repl_log.clj
 /.clj-kondo/
 /.lsp/
+/logs/

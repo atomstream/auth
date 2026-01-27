@@ -1,0 +1,13 @@
+{:dev/route-var-handlers true
+ :dev/allow-debug?       true
+
+ :db/url "jdbc:postgresql://localhost:5432/oak"
+ :db/username "oak"
+ :db/password "oak"
+
+ :http/csp-policy "default-src 'self'; script-src 'self' 'nonce'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
+
+ :time/zone-id "Europe/Berlin"
+ :email/smtp-host "127.0.0.1"
+ :email/smtp-port 2525
+ :email/from "oak@example.com"}

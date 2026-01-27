@@ -1,6 +1,6 @@
 #!/usr/bin/env -S clojure -A:tools.build -J-Dclojure.main.report=stderr -M
 
-(ns oak.bin.build
+(ns auth.bin.build
   (:require
    [clojure.java.io :as io]
    [clojure.java.shell :as sh]
@@ -44,7 +44,7 @@
                         :class-dir    target-dir
                         :compile-opts {:elide-meta [:doc]}})
 
-    (h "Building target/oak-uberjar.jar")
+    (h "Building target/auth-uberjar.jar")
     (build/uber {:class-dir         target-dir
                  :uber-file         (str target-dir "/auth-uberjar.jar")
                  :basis             basis

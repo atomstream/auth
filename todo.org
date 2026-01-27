@@ -1,3 +1,16 @@
-* TODO backups
-* TODO traefik
+* DONE Use Oak as a library
+
+* TODO example app
+
+GET / should return an applicatin which has a logged-in view with a 'logout' button, and a non-logged-in view with a 'login' button.
+
+How to determine login?
+- Does a user have a valid access token?
+
+- Is there a way to load some simple javascript,
+  or create with scittle?
+
+* TODO Deploy Uberjar
+
+* TODO Authenticate with Forgejo
 

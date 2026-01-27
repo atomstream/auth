@@ -1,0 +1,12 @@
+#!/usr/bin/env bb
+
+(require '[lambdaisland.launchpad :as launchpad])
+
+(def pre-steps
+  [(launchpad/run-process {:cmd '[docker compose up -d --no-recreate]})])
+
+(launchpad/main {:pre-steps pre-steps})
+
+;; Local Variables:
+;; mode:clojure
+;; End:

@@ -1,0 +1,6 @@
+{:paths ["src"]
+ :deps {;; Oak has a lot of dependencies, which we are attempting
+        ;; to use as-is in this example project.
+        co.gaiwan/oak {:mvn/version "1.0.246"}
+        org.babashka/cli {:mvn/version "0.8.67"}
+        http-kit/http-kit {:mvn/version "2.9.0-beta3"}}}
