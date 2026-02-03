@@ -29,7 +29,8 @@ this gets us three very important things:
 2. It provides us a stable user identifier for data pipelines,
    unlocking value in undersatnding user behavior across tools.
 
-3. It provides our customers with an auditable 
+3. It provides our customers with a core auditable component, building 
+   trust.
 
 We are particularly interested in integrating
 [Tailscale](https://tailscale.com/) and an in-house OIDC IdP, so that
@@ -71,27 +72,27 @@ Useful for development: Docker
 Launch the application using launchpad:
 
 ```
-echo '{:launchpad/aliases [:dev :test] :launchpad/options {:go true}}' > deps.local.edn
+echo '{:launchpad/aliases [:dev] :launchpad/options {:go true}}' > deps.local.edn
 bin/launchpad
 ```
 
 ## Example client
 
-This project includes an example client which uses the same dependency
-stack as Oak, with the exception of `lambdaisland.cli` (for now). Why
-the same dependenceis?  If we are going to build on the library, we
-should understand how it works. No better way to understand it than to
-pick apart some components and put them back together in the form of a
-client app. That, and the lambdaisland collection of libraries are
-stable and integrate well, so this may a good base for building larger
-applications.
+This project includes an example client which uses the same
+dependencies as Oak,with the exception of `lambdaisland.cli` (for
+now). Why the same dependenceis?  If we are going to build on the
+library, we should understand how it works. No better way to
+understand it than to pick apart some components and put them back
+together in the form of a client app. That, and the lambdaisland
+collection of libraries are stable and well integrated, so this may a
+good base for building larger applications.
 
-To run the example, you will need to create a client and user. 
+To run the example, you will need to create a client and user.
 
 ```
 bin/atomauth jwk create
 bin/atomauth user create --email kyle@atomstream.io --password password123
-bin/atomauth oauth-client create --client-name "example" --redirect-uri \ 'http://localhost:9000/callback' --scope profile --scope openid --scope email
+bin/atomauth oauth-client create --client-name "example" --redirect-uri \ 'http://localhost:8080/callback' --scope profile --scope openid --scope email
 ```
 
 Start the application

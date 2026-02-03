@@ -33,4 +33,5 @@
       (println (show-help cli-spec))
       (do
         (app/run-server opts)
+        (println "App started on port" (:port opts))
         @(promise)))))

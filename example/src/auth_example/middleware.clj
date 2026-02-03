@@ -41,6 +41,7 @@
    :headers {"Location" (util/url-for req route)}
    :session (assoc session :redirect-after-login uri)})
 
+;; TODO add /private
 ;; If there is an identity in the session, retrieve the auth
 ;; The auth will have the access token (and possibly the associated claims?)
 ;; Here we should check that the auth is still valid.
@@ -107,8 +108,6 @@
   (fn [req]
     (assoc req :ctx ctx)))
 
-;; TODO secure 
-
 (defn app-middleware
   "Middleware common to all endpoints"
   [ctx]
@@ -124,7 +123,7 @@
                       :cookie-name "atomauth-session"
                       :cookie-attrs {:http-only true
                                      :same-site :strict
-                                     :secure false}}]
+                                     :secure true}}]
    wrap-auth-claims
    ring-flash/wrap-flash
    wrap-content-security-policy

@@ -1,16 +1,35 @@
 * DONE Use Oak as a library
 
-* TODO example app
+* DONE example app with basic login / logout
 
-GET / should return an applicatin which has a logged-in view with a 'logout' button, and a non-logged-in view with a 'login' button.
+* DONE Uberjar
 
-How to determine login?
-- Does a user have a valid access token?
+* DONE Container build
 
-- Is there a way to load some simple javascript,
-  or create with scittle?
+Bulid a Podman container with this app
 
-* TODO Deploy Uberjar
+* TODO Deploy site to auth.atomstream.io
 
-* TODO Authenticate with Forgejo
+* TODO Backups
 
+Back up the database to S3, perhaps with =duplicity-postgres-s3=
+
+* TODO Password reset email templates
+
+Ensure password reset flow works with resend.com
+
+* TODO [example] /private area
+
+- Add a section to the site which is only accessible
+  when the user is logged in. If not, try and authenticate,
+  then redirect back to that page with user details
+
+* TODO Re-brand auth page
+
+* TODO Prometheus metrics
+
+* TODO Odoo OIDC
+
+* TODO Migration path
+
+Launch a test instance with OIDC modules

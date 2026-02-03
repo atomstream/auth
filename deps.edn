@@ -5,13 +5,7 @@
  {:dev
   {:extra-paths ["dev"]
    :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.0"}}}
- 
-  :test
-  {:extra-paths ["test"]
-   :extra-deps  {org.clojure/tools.gitlibs                       {:mvn/version "2.6.206"}
-                 lambdaisland/kaocha                             {:mvn/version "1.91.1392"}
-                 ring/ring-mock                                  {:mvn/version "0.6.2"}
-                 nubank/matcher-combinators                      {:mvn/version "3.9.2"}}}
+    
   :tools.build
   {:extra-deps
    {io.github.clojure/tools.build {:mvn/version "0.10.11"}
